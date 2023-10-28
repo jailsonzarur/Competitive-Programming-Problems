@@ -16,27 +16,32 @@ stack<int> dectobin(int num)
     return result;
 }
 
-int bintodec(stack<int> num)
+long long bintodec(stack<int> num)
 {
-    float i = num.size() - 1;
-    int result = 0;
+    int i = num.size() - 1;
+    long long result = 0;
     while (!num.empty())
     {
-        result += num.top() * pow(2.0, i);
+        result += num.top() * pow(2, i);
         i--;
         num.pop();
     }
     return result;
 }
 
+void mostrar(stack<int> num){
+    while(!num.empty()){
+        cout << num.top();
+        num.pop();
+    }
+    cout << endl;
+}
+
 int main()
 {
     int n1, n2;
-    ios::sync_with_stdio(false);
-    while (cin >> n1)
+    while (cin >> n1 >> n2)
     {
-        ios::sync_with_stdio(false);
-        cin >> n2;
         stack<int> n1pilha = dectobin(n1);
         stack<int> n2pilha = dectobin(n2);
         stack<int> resultado;
@@ -55,16 +60,10 @@ int main()
             }
         }
 
-        while(!n1pilha.empty()){
-            cout << n1pilha.top();
-            n1pilha.pop();
-        }
-        cout << endl;
-        while(!n2pilha.empty()){
-            cout << n2pilha.top();
-            n2pilha.pop();
-        }
-        cout << endl;
+        mostrar(n1pilha);
+        mostrar(n2pilha);
+
+        
 
         while (!n2pilha.empty())
         {
@@ -83,14 +82,8 @@ int main()
             n1pilha.pop();
             n2pilha.pop();
         }
-
-        int resultfinal = bintodec(resultado);
-        while (!resultado.empty())
-        {
-            cout << resultado.top();
-            resultado.pop();
-        }
-        cout << endl;
+        mostrar(resultado);
+        long long resultfinal = bintodec(resultado);
         cout << resultfinal << endl;
     }
     return 0;

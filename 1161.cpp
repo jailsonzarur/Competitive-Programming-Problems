@@ -6,8 +6,8 @@ int main(){
     ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
     int n1, n2;
     while(cin >> n1 >> n2){
-        double f1 = 1;
-        double f2 = 1;
+        long long f1 = 1;
+        long long f2 = 1;
         if(n1 == 0){
             f1 = 1;
         }else{
@@ -22,7 +22,7 @@ int main(){
                 f2 *= i;
             }
         }
-        printf("%.0f\n", f1+f2);
+        cout << f1+f2 << endl;
     }
     return 0;
 }

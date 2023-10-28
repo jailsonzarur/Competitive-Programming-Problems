@@ -40,8 +40,6 @@ int main(){
                 casatemp++;
             }
         }
-        cout << vai.front() << endl;
-        cout << volta.front() << endl;
         vai.pop();
         volta.pop();
     }

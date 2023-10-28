@@ -4,12 +4,6 @@ using namespace std;
 
 int main(){
     int x1, y1, x2, y2;
-    int xadrez[8][8];
-    for( int i = 0 ; i < 8 ; i++ ){
-        for( int j = 0 ; j < 8 ; j++ ){
-            xadrez[i][j] = 0;
-        }
-    }
     while(true){
         cin >> x1 >> y1 >> x2 >> y2;
 
@@ -17,11 +11,6 @@ int main(){
 
         if(x1 == x2  && y1 == y2){
             cout << 0 << endl;
-            continue;
-        } 
-
-        if(x2 == y2){
-            cout << 1 << endl;
             continue;
         } 
 
@@ -51,4 +40,5 @@ int main(){
         cout << 2 << endl;
 
     }
+    return 0;
 }

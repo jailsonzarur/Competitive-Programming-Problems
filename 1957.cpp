@@ -2,56 +2,54 @@
 
 using namespace std;
 
-int main()
-{
+string converte(int num){
+    if(num > 9){
+        if(num == 10) return "A";
+        if(num == 11) return "B";
+        if(num == 12) return "C";
+        if(num == 13) return "D";
+        if(num == 14) return "E";
+        if(num == 15) return "F";
+    }else{ 
+        return to_string(num);
+    }
+    return "";
+}
+
+int main(){
     int num;
+    string result = "";
     cin >> num;
-    if (num >= 16)
-    {
-        int temp;
-        string result = " ";
-        while (temp >= 16)
-        {
-            temp = num / 16;
-            int h = num % 16;
-            string t;
-            if (h > 9)
-            {
-                if (h == 10)
-                    t = "A";
-                if (h == 11)
-                    t = "B";
-                if (h == 12)
-                    t = "C";
-                if (h == 13)
-                    t = "D";
-                if (h == 14)
-                    t = "E";
-                if (h == 15)
-                    t = "F";
-                result += t;
-            }else{
-                result += to_string(h);
-            }
-        }
-        cout << result << endl;
+
+    if(num < 16){
+        string temp = converte(num);
+        cout << temp << endl;
         return 0;
     }
-    if(num < 10){
-        cout << num << endl;
-    }else{
-        if (num == 10)
-            cout << "A" << endl;
-        if (num == 11)
-            cout << "B" << endl;        
-        if (num == 12)
-            cout << "C" << endl;       
-        if (num == 13)
-            cout << "D" << endl;        
-        if (num == 14)
-            cout << "E" << endl;         
-        if (num == 15)
-            cout << "F" << endl;        
+
+    while(num >= 16){
+        int resto = num % 16;
+        num = num / 16;
+        if(num < 16){
+            string temp = converte(num);
+            string tempresto = converte(resto);
+            result += tempresto;
+            result += temp;
+            break;
+        }else{
+            string temp = converte(resto);
+            result += temp;
+        }
     }
+
+    char resultemp[result.length()+1];
+    strcpy(resultemp, result.c_str());
+
+    for( int i = result.length()-1 ; i >= 1 ; i-- ){
+        cout << resultemp[i];
+    }
+    cout << resultemp[0] << endl;
+
     return 0;
+    
 }

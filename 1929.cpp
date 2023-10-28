@@ -11,7 +11,7 @@ int main(){
         nums.push_back(x);
     }
     sort(nums.begin(), nums.end());
-    if(nums[1] + nums[2] > nums[3]) cout << "S" << endl;
+    if(nums[1] + nums[2] > nums[3] || nums[0] + nums[1] > nums[2]) cout << "S" << endl;
     else cout << "N" << endl;
     return 0;
 }

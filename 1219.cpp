@@ -18,6 +18,6 @@ int main()
         double acircmaior = rmaior * rmaior * pi;
         double sunflowers = acircmaior - area;
         printf("%.4f %.4f %.4f\n", sunflowers, violets, roses);
-        return 0;
     }
+    return 0;
 }

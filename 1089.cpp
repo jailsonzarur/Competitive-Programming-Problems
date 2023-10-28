@@ -6,68 +6,37 @@ int main()
 {
     while (true)
     {
-        int n;
-        cin >> n;
-        if (n == 0)
+        int N;
+        cin >> N;
+        if (N == 0)
             break;
+        int n = N+2;
         int array[n];
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < N; i++)
         {
             cin >> array[i];
         }
 
-        queue<char> pen;
-        int temp;
-        if (array[1] - array[0] < 0)
-        {
-            temp = '-';
-            pen.push(temp);
-        }
-        else
-        {
-            temp = '+';
-            pen.push(temp);
-        }
+        array[n-2] = array[0];
+        array[n-1] = array[1];
+
+        int picos = 0;
 
         for (int i = 2; i < n; i++)
         {
-            if (array[i] - array[i - 1] < 0)
+            if (array[i - 2] < array[i - 1] && array[i - 1] > array[i])
             {
-                if (temp != '-')
-                {
-                    temp = '-';
-                    pen.push(temp);
-                }
+                picos++;
             }
-            
-            if(array[i] - array[i-1] > 0)
+            if (array[i - 2] > array[i - 1] && array[i - 1] < array[i])
             {
-                if (temp != '+')
-                {
-                    temp = '+';
-                    pen.push(temp);
-                }
+                picos++;
             }
         }
 
-        if (array[0] - array[n-1] < 0)
-        {
-            if (pen.front() != '-')
-            {
-                pen.push('-');
-            }
-        }
         
-        if(array[0] - array[n-1] > 0)
-        {
-            if (pen.front() != '+')
-            {
-                pen.push('+');
-            }
-        }
 
-        cout << pen.size() << endl;
+        cout << picos << endl;
     }
-
     return 0;
 }

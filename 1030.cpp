@@ -4,37 +4,50 @@ using namespace std;
 
 int main()
 {
-    long long n, k;
-    long long vezes;
-    ios::sync_with_stdio(false);
+    ios::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+    int vezes;
     cin >> vezes;
-    for (long long j = 0; j < vezes; j++)
-    {
-        ios::sync_with_stdio(false);
-        cin >> n >> k;
-        vector<long long> pessoas(n);
-        long long num = 1;
-        for( long long i = 0 ; i < n ; i++ ){
-            pessoas[i] = num;
-            num++;
-        }
-        long long i = k - 1;
-        while (pessoas.size() > 1)
-        {
 
-            pessoas.erase(pessoas.begin() + i);
-            if (i + k - 1 >= pessoas.size())
+    for( int j = 0 ; j < vezes ; j++ )
+    {
+        int n, k;
+        cin >> n >> k;
+        bool pessoas[n];
+
+        for( int i = 0 ; i < n ; i++ ){
+            pessoas[i] = true;
+        }
+
+        int mortos = 0;
+        int cont = k;
+        int ponto = k - 1; 
+        if(k > n){
+            ponto = k%n - 1;
+        }
+        while (mortos < n-1)
+        {
+            while (cont < k)
             {
-                long long temp = (i + k - pessoas.size() - 1);
-                i = temp;
+                int next = ponto + 1;
+                if (next == n) next = 0;
+                if (pessoas[next]) cont++;
+                ponto++;
+                if (ponto >= n) ponto = 0;
             }
-            else
-            {
-                i += k - 1;
+            pessoas[ponto] = false;
+            cont = 0;
+            mortos++;
+        }
+
+        for (int i = 0; i < n; i++)
+        {
+            if (pessoas[i]){
+                cout << "Case " << j+1 << ": " << i+1 << endl;
+                break;
             }
         }
-        cout << "Case " << j+1 << ": " << pessoas[0] << endl;
 
     }
 
+    return 0;
 }
